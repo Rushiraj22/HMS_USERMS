@@ -1,7 +1,14 @@
 package com.hms.user.user.dto;
 
-public enum Roles {
+import org.springframework.security.core.GrantedAuthority;
+
+public enum Roles implements GrantedAuthority {
     ADMIN,
     DOCTOR,
-    PATIENT
+    PATIENT;
+
+    @Override
+    public String getAuthority() {
+        return name();
+    }
 }
