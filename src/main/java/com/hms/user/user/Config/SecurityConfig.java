@@ -31,8 +31,11 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers(request -> "SECRET".equals(request.getHeader("x-Secret-Key"))).permitAll()
-                .anyRequest().denyAll()
+//                .requestMatchers(request -> "SECRET".equals(request.getHeader("x-Secret-Key"))).permitAll()
+                            .requestMatchers("/**").permitAll()
+                 .anyRequest().denyAll()
+//                            .requestMatchers("/user/register", "/user/login").permitAll() // ✅ Allow public endpoints
+//                            .anyRequest().authenticated()
             );
         // Enable basic authentication
 
